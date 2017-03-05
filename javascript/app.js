@@ -130,22 +130,9 @@ function reqParam() {
 
         return html;
     }
-    const runSearchQuery = () => {
-        const {value} = input;
 
-        validateSearch(value)
-            .then((query) => {
-                console.log('about to search for: ', query);
-
-                input.value = '';
-                input.setAttribute('disabled', 'disabled');
-                button.setAttribute('disabled', 'disabled');
-
-
-                return SpotifyAPI.search(query);
-            })
-            .then((data) => {
-                // bring back the input fields
+    const render = (data) => {
+        // bring back the input fields
                 input.removeAttribute('disabled');
                 button.removeAttribute('disabled');
                 // clear search results
@@ -167,11 +154,34 @@ function reqParam() {
                 console.log(nextBtn)
 
                 nextBtn.addEventListener('click', (e) => {
-                    SpotifyAPI.search(query)
+                    // console.log(response.pagination.offset)
+                    // gifSearch(searchTerm, onResponse, 10, response.pagination.offset + 10
+                    SpotifyAPI.search('','track', 10, 0, data.tracks.next)
+                        .then((data) => {
+                            render(data)
+                        })
                 })
 
                 results.appendChild(nextBtn)
                 results.appendChild(btnContainer)
+    }
+    const runSearchQuery = () => {
+        const {value} = input;
+
+        validateSearch(value)
+            .then((query) => {
+                console.log('about to search for: ', query);
+
+                input.value = '';
+                input.setAttribute('disabled', 'disabled');
+                button.setAttribute('disabled', 'disabled');
+
+
+                return SpotifyAPI.search(query);
+            })
+            .then((data) => {
+                console.log(data) 
+                render(data)
 
             })
             .catch((e) => {

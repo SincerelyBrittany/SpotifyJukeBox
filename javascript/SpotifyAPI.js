@@ -39,10 +39,13 @@ SpotifyAPI.getUrlString = (endpoint) => {
     type arg, returns promise that makes
     call to Spotify API
 */
-SpotifyAPI.search = (q = reqParam(), type = 'track') => {
+SpotifyAPI.search = (q = reqParam(), type = 'track', limit = 10, offset = 0, url = null) => {
     // search?q=adele&type=track
     return new Promise((resolve, reject) => {
-        const url = SpotifyAPI.getUrlString('search') + 'q=' + q + '&type=' + type;
+        if (url === null) {
+            url = SpotifyAPI.getUrlString('search') + 'q=' + q + '&type=' + type; 
+        }
+
         
         const http = new XMLHttpRequest();
         http.open('GET', url);
