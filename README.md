@@ -4,9 +4,9 @@ I had to create a jukebox using the Spotify API for NYCDA:
 
 Find the instructions below:
 
-Your SoundCloud enabled jukebox should allow the user to do the following things:
+Your Spotify enabled jukebox should allow the user to do the following things:
 
-Play a track off of SoundCloud based on its track ID
+Play a track off of Spotify based on its track ID
 Pause the currently playing track
 Display the following current track information:
 Artist name with link to his/her profile page
@@ -15,7 +15,8 @@ Description and genre
 Artwork
 Playlist Challenge:
 
-If you have time and are looking for an extra challenge try the following. Create a playlist on SoundCloud and enable the user to do the following things:
+If you have time and are looking for an extra challenge try the following. Create a playlist on 
+d and enable the user to do the following things:
 
 Play a track off of a chosen playlist
 Pause the currently playing track
